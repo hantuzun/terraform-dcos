@@ -73,6 +73,16 @@ variable "ip-detect" {
  }
 }
 
+variable "public-ip-detect" {
+ description = "Used to determine the public IP address of instances"
+ type = "map"
+
+ default = {
+  aws   = "scripts/cloud/aws/public-ip-detect.aws.sh"
+  azure = "scripts/cloud/azure/public-ip-detect.azure.sh"
+ }
+}
+
 variable "os-init-script" {
  description = "Init Scripts that runs post-AMI deployment and pre-DC/OS install" 
  type = "map"

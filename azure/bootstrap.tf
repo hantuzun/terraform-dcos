@@ -378,6 +378,12 @@ resource "null_resource" "bootstrap" {
    destination = "/tmp/ip-detect"
    }
 
+  # DCOS public ip detect script
+  provisioner "file" {
+   source = "${var.public-ip-detect["azure"]}"
+   destination = "/tmp/public-ip-detect"
+   }
+
   # Generate and upload bootstrap script to node
   provisioner "file" {
     content     = "${module.dcos-bootstrap.script}"
